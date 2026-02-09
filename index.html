@@ -192,7 +192,26 @@ html,body{width:100%;height:100%;overflow-x:hidden;background:var(--dark);font-f
 </style>
 </head>
 <body>
+<!-- YouTube Player caché -->
+<div id="ytPlayer" style="position:fixed;top:-9999px;left:-9999px">
+  <div id="player"></div>
+</div>
 
+<script src="https://www.youtube.com/iframe_api"></script>
+<script>
+// Remplace VIDEO_ID par l'ID de ta vidéo YouTube
+const VIDEO_ID = 'MET-CE-ICI'; // ex: 'dQw4w9WgXcQ'
+
+let player;
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player('player', {
+    height: '1', width: '1',
+    videoId: VIDEO_ID,
+    playerVars: { autoplay: 0, loop: 1, playlist: VIDEO_ID },
+    events: { onReady: () => console.log('Player ready') }
+  });
+}
+</script>
 <div class="preloader" id="preloader">
   <div class="preloader-text">Chargement de l'horreur...</div>
   <div class="preloader-bar"><div class="preloader-bar-inner"></div></div>
@@ -497,13 +516,31 @@ function createAudio(){
 }
 
 // SOUND CONTROLS
-const sBtn=document.getElementById('soundBtn'),vSl=document.getElementById('volSlider'),vR=document.getElementById('volRange');
-sBtn.addEventListener('click',()=>{
-  if(!isPlaying){isPlaying=true;masterNode=createAudio();sBtn.textContent='🔊';sBtn.classList.add('active');vSl.classList.add('open')}
-  else{isPlaying=false;if(audioCtx){audioCtx.close();audioCtx=null}sBtn.textContent='🔇';sBtn.classList.remove('active');vSl.classList.remove('open')}
+const sBtn = document.getElementById('soundBtn');
+const vSl = document.getElementById('volSlider');
+const vR = document.getElementById('volRange');
+let isPlaying = false;
+
+sBtn.addEventListener('click', () => {
+  if (!player) return;
+  if (!isPlaying) {
+    player.playVideo();
+    isPlaying = true;
+    sBtn.textContent = '🔊';
+    sBtn.classList.add('active');
+    vSl.classList.add('open');
+  } else {
+    player.pauseVideo();
+    isPlaying = false;
+    sBtn.textContent = '🔇';
+    sBtn.classList.remove('active');
+    vSl.classList.remove('open');
+  }
 });
-vR.addEventListener('input',e=>{masterVol=e.target.value/100;if(masterNode)masterNode.gain.setValueAtTime(masterVol,audioCtx.currentTime)});
-sBtn.addEventListener('contextmenu',e=>{e.preventDefault();vSl.classList.toggle('open')});
+
+vR.addEventListener('input', e => {
+  if (player) player.setVolume(e.target.value);
+});
 </script>
 </body>
 </html>
