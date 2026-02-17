@@ -170,7 +170,7 @@ body{width:100vw;height:100vh;overflow:hidden;background:var(--dark);font-family
     </div>
     <div class="countdown-block release-block">
       <div class="cd-header"><span class="cd-icon">🎮</span><span class="cd-title">Game Release</span></div>
-      <div class="cd-date">February 18, 2026</div>
+      <div class="cd-date">February 18, 2026 — 6:00 PM CET / 12:00 PM EST</div>
       <div class="countdown" id="releaseCountdown">
         <div class="time-block"><div class="time-value" id="rDays">00</div><div class="time-label">Days</div></div><div class="separator">:</div>
         <div class="time-block"><div class="time-value" id="rHours">00</div><div class="time-label">Hours</div></div><div class="separator">:</div>
@@ -232,7 +232,7 @@ sBtn.addEventListener('contextmenu',e=>{e.preventDefault();vSl.classList.toggle(
 window.addEventListener('load',()=>{setTimeout(()=>document.getElementById('preloader').classList.add('hidden'),2200)});
 
 const trailerDate=new Date('2026-02-11T18:00:00Z').getTime();
-const releaseDate=new Date('2026-02-18T00:00:00').getTime();
+const releaseDate=new Date('2026-02-18T17:00:00Z').getTime();
 let trailerRevealed=false;
 
 function updateCD(target,dId,hId,mId,sId,cdEl,doneEl,btnEl){const diff=target-Date.now();if(diff<=0){if(cdEl)cdEl.style.display='none';if(doneEl)doneEl.classList.add('show');if(btnEl)btnEl.classList.add('show');return 0}const d=Math.floor(diff/864e5),h=Math.floor(diff%864e5/36e5),m=Math.floor(diff%36e5/6e4),s=Math.floor(diff%6e4/1e3);document.getElementById(dId).textContent=String(d).padStart(2,'0');document.getElementById(hId).textContent=String(h).padStart(2,'0');document.getElementById(mId).textContent=String(m).padStart(2,'0');document.getElementById(sId).textContent=String(s).padStart(2,'0');return diff}
