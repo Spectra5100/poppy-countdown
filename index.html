@@ -205,7 +205,7 @@ body{width:100vw;height:100vh;overflow:hidden;background:var(--dark);font-family
   <button class="sound-btn" id="soundBtn" title="Toggle Music">🔇</button>
 </div>
 <div class="footer">Fan-made • Not affiliated with MOB Entertainment • end-of-the-rope.com</div>
-<script src="https://www.youtube.com/iframe_api"></script>
+<script async src="https://www.youtube.com/iframe_api"></script>
 <script>
 const MUSIC_VIDEO_ID='rJTyjQ_nIIQ';
 // Game is out! No more countdowns needed.
@@ -226,9 +226,8 @@ sBtn.addEventListener('click',()=>{if(!ytReady)return;if(!musicPlaying){ytPlayer
 vR.addEventListener('input',e=>{currentVolume=parseInt(e.target.value);if(ytReady&&ytPlayer)ytPlayer.setVolume(currentVolume)});
 sBtn.addEventListener('contextmenu',e=>{e.preventDefault();vSl.classList.toggle('open')});
 
-window.addEventListener('DOMContentLoaded',()=>{setTimeout(()=>document.getElementById('preloader').classList.add('hidden'),2200)});
-// Fallback in case DOMContentLoaded already fired
-setTimeout(()=>document.getElementById('preloader').classList.add('hidden'),3000);
+// Force preloader to hide no matter what
+(function(){var p=document.getElementById('preloader');function hide(){if(p)p.classList.add('hidden')}setTimeout(hide,2500);if(document.readyState==='complete'||document.readyState==='interactive'){setTimeout(hide,800)}else{document.addEventListener('DOMContentLoaded',function(){setTimeout(hide,1500)});window.addEventListener('load',function(){setTimeout(hide,500)})}})();
 
 const pEl=document.getElementById('particles');for(let i=0;i<35;i++){const p=document.createElement('div');p.className='particle';const sz=2+Math.random()*4,c=Math.random()>.5;p.style.cssText='left:'+Math.random()*100+'%;width:'+sz+'px;height:'+sz+'px;animation-duration:'+(8+Math.random()*14)+'s;animation-delay:'+Math.random()*10+'s;background:'+(c?'var(--neon-blue)':'var(--neon-pink)')+';box-shadow:0 0 '+sz*2+'px '+(c?'var(--neon-blue)':'var(--neon-pink)');pEl.appendChild(p)}
 const bR=document.getElementById('bloodRain');for(let i=0;i<18;i++){const d=document.createElement('div');d.className='blood-drop';d.style.cssText='left:'+Math.random()*100+'%;height:'+(20+Math.random()*40)+'px;animation-duration:'+(2+Math.random()*3)+'s;animation-delay:'+Math.random()*5+'s';bR.appendChild(d)}
