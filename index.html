@@ -3,112 +3,77 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>⚠️ POPPY PLAYTIME - CHAPTER 5 - COUNTDOWN ⚠️</title>
+<title>⚠️ POPPY PLAYTIME - CHAPTER 5 ⚠️</title>
 <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Special+Elite&family=Nosifer&family=Eater&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{--blood:#8b0000;--neon-blue:#00f0ff;--neon-pink:#ff0066;--neon-yellow:#ffcc00;--dark:#060608;--poppy-red:#cc0033}
 html{width:100%;height:100%;overflow:hidden}
-body{width:100vw;height:100vh;overflow:hidden;background:var(--dark);font-family:'Special Elite',cursive;color:#e0e0e0;user-select:none;position:fixed;inset:0;cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Ccircle cx='16' cy='16' r='12' fill='none' stroke='%23ff0066' stroke-width='2' stroke-dasharray='4 3'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%23ff0066'/%3E%3C/svg%3E") 16 16,crosshair}
-.preloader{position:fixed;inset:0;z-index:9999;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 1s,visibility 1s}
-.preloader.hidden{opacity:0;visibility:hidden;pointer-events:none}
-.preloader-text{font-family:'Nosifer',cursive;font-size:clamp(0.9rem,2vw,1.6rem);color:var(--poppy-red);text-shadow:0 0 30px var(--poppy-red);animation:pPulse 1.5s ease-in-out infinite;margin-bottom:2rem}
-@keyframes pPulse{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:1;transform:scale(1.05)}}
-.preloader-bar{width:200px;height:3px;background:#1a1a1a;border-radius:2px;overflow:hidden}
-.preloader-bar-inner{height:100%;background:linear-gradient(90deg,var(--poppy-red),var(--neon-pink));box-shadow:0 0 10px var(--neon-pink);animation:loadBar 2.2s ease-in-out forwards}
-@keyframes loadBar{0%{width:0}100%{width:100%}}
+body{width:100vw;height:100vh;overflow:hidden;background:var(--dark);font-family:'Special Elite',cursive;color:#e0e0e0;user-select:none;position:fixed;inset:0}
+
+/* BACKGROUND - static, no animation */
 .bg-layer{position:fixed;inset:0;z-index:0;background:radial-gradient(ellipse at 15% 85%,rgba(139,0,0,.3) 0%,transparent 50%),radial-gradient(ellipse at 85% 15%,rgba(26,95,255,.12) 0%,transparent 50%),radial-gradient(ellipse at 50% 50%,rgba(204,0,51,.06) 0%,transparent 60%),linear-gradient(180deg,#030305 0%,#0a0a14 30%,#0d0510 60%,#080305 100%)}
-.fog{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.4}
-.fog-layer{position:absolute;inset:-50%;width:200%;height:200%;background:radial-gradient(ellipse,rgba(100,100,120,.08) 0%,transparent 70%);animation:fogD 25s ease-in-out infinite}
-.fog-layer:nth-child(2){animation-duration:35s;animation-direction:reverse;background:radial-gradient(ellipse,rgba(139,0,0,.05) 0%,transparent 60%)}
-@keyframes fogD{0%{transform:translate(0) scale(1)}33%{transform:translate(5%,-3%) scale(1.1)}66%{transform:translate(-3%,5%) scale(.95)}100%{transform:translate(0) scale(1)}}
-.grain{position:fixed;inset:-50%;z-index:1;width:300%;height:300%;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");opacity:.05;animation:grainS .4s steps(4) infinite;pointer-events:none}
-@keyframes grainS{0%{transform:translate(0)}25%{transform:translate(-2%,-1%)}50%{transform:translate(1%,2%)}75%{transform:translate(-1%,-2%)}100%{transform:translate(0)}}
-.scanlines{position:fixed;inset:0;z-index:2;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.12) 2px,rgba(0,0,0,.12) 4px)}
-.vignette{position:fixed;inset:0;z-index:2;pointer-events:none;animation:hb 3s ease-in-out infinite}
-@keyframes hb{0%,100%{box-shadow:inset 0 0 200px rgba(0,0,0,.7),inset 0 0 100px rgba(139,0,0,.15)}12%{box-shadow:inset 0 0 180px rgba(0,0,0,.6),inset 0 0 150px rgba(139,0,0,.3)}24%{box-shadow:inset 0 0 200px rgba(0,0,0,.7),inset 0 0 100px rgba(139,0,0,.15)}36%{box-shadow:inset 0 0 190px rgba(0,0,0,.65),inset 0 0 130px rgba(139,0,0,.25)}}
-.glitch-overlay{position:fixed;inset:0;z-index:100;pointer-events:none;opacity:0}
-.particles{position:fixed;inset:0;z-index:1;pointer-events:none;overflow:hidden}
-.particle{position:absolute;border-radius:50%;opacity:0;animation:floatUp linear infinite}
-@keyframes floatUp{0%{opacity:0;transform:translateY(100vh) scale(.3)}10%{opacity:.7}50%{opacity:.4}90%{opacity:.1}100%{opacity:0;transform:translateY(-10vh) scale(1)}}
-.blood-rain{position:fixed;inset:0;z-index:3;pointer-events:none;overflow:hidden}
-.blood-drop{position:absolute;top:-20px;width:2px;background:linear-gradient(180deg,transparent,rgba(139,0,0,.6),transparent);animation:bFall linear infinite;opacity:0}
-@keyframes bFall{0%{transform:translateY(-20px);opacity:0}10%{opacity:.4}90%{opacity:.2}100%{transform:translateY(105vh);opacity:0}}
+.scanlines{position:fixed;inset:0;z-index:2;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.08) 2px,rgba(0,0,0,.08) 4px)}
+.vignette{position:fixed;inset:0;z-index:2;pointer-events:none;box-shadow:inset 0 0 200px rgba(0,0,0,.7),inset 0 0 100px rgba(139,0,0,.15)}
+
+/* WARNING TAPE */
 .warning-tape{position:fixed;top:0;left:0;right:0;z-index:50;height:36px;background:repeating-linear-gradient(-45deg,#1a1a1a,#1a1a1a 10px,#ffcc00 10px,#ffcc00 20px);display:flex;align-items:center;overflow:hidden;box-shadow:0 2px 20px rgba(0,0,0,.5)}
 .tape-text{font-family:'Nosifer',cursive;font-size:.55rem;color:#000;letter-spacing:3px;white-space:nowrap;animation:marquee 18s linear infinite}
 @keyframes marquee{0%{transform:translateX(100vw)}100%{transform:translateX(-100%)}}
 .warning-tape-bottom{position:fixed;bottom:0;left:0;right:0;z-index:50;height:36px;background:repeating-linear-gradient(45deg,#1a1a1a,#1a1a1a 10px,#ffcc00 10px,#ffcc00 20px);box-shadow:0 -2px 20px rgba(0,0,0,.5)}
+
+/* CONTAINER */
 .container{position:fixed;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 2rem;text-align:center;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;-ms-overflow-style:none}
 .container::-webkit-scrollbar{display:none}
-.logo-area{margin-bottom:.3rem;animation:fadeIn 2s ease-out;flex-shrink:0}
-@keyframes fadeIn{0%{opacity:0;transform:translateY(-40px)}100%{opacity:1;transform:translateY(0)}}
-.playtime-co{font-family:'Special Elite',cursive;font-size:clamp(.6rem,1.2vw,.9rem);color:var(--neon-blue);letter-spacing:14px;text-transform:uppercase;text-shadow:0 0 20px var(--neon-blue),0 0 40px rgba(0,240,255,.2);animation:flicker 5s ease-in-out infinite;margin-bottom:.5rem}
-@keyframes flicker{0%,100%{opacity:1}47%{opacity:1}48%{opacity:.4}49%{opacity:1}50%{opacity:.7}51%{opacity:1}76%{opacity:.6}77%{opacity:1}}
-.main-title{font-family:'Nosifer',cursive;font-size:clamp(1.8rem,6vw,5rem);line-height:1;color:transparent;background:linear-gradient(180deg,#ff1a1a 0%,#cc0033 30%,#8b0000 70%,#3d0000 100%);-webkit-background-clip:text;background-clip:text;filter:drop-shadow(0 0 40px rgba(204,0,51,.6)) drop-shadow(0 4px 80px rgba(139,0,0,.4));position:relative;animation:titleFloat 6s ease-in-out infinite}
-@keyframes titleFloat{0%,100%{transform:translateY(0);filter:drop-shadow(0 0 40px rgba(204,0,51,.6)) drop-shadow(0 4px 80px rgba(139,0,0,.4))}50%{transform:translateY(-5px);filter:drop-shadow(0 0 60px rgba(204,0,51,.8)) drop-shadow(0 8px 100px rgba(139,0,0,.6))}}
+
+/* TITLE */
+.logo-area{margin-bottom:.3rem;flex-shrink:0}
+.playtime-co{font-family:'Special Elite',cursive;font-size:clamp(.6rem,1.2vw,.9rem);color:var(--neon-blue);letter-spacing:14px;text-transform:uppercase;text-shadow:0 0 20px var(--neon-blue),0 0 40px rgba(0,240,255,.2);margin-bottom:.5rem}
+.main-title{font-family:'Nosifer',cursive;font-size:clamp(1.8rem,6vw,5rem);line-height:1;color:transparent;background:linear-gradient(180deg,#ff1a1a 0%,#cc0033 30%,#8b0000 70%,#3d0000 100%);-webkit-background-clip:text;background-clip:text;filter:drop-shadow(0 0 40px rgba(204,0,51,.6)) drop-shadow(0 4px 80px rgba(139,0,0,.4));position:relative}
 .main-title::before,.main-title::after{content:attr(data-text);position:absolute;top:0;left:0;right:0;background:linear-gradient(180deg,#ff1a1a,#cc0033 30%,#8b0000 70%,#3d0000);-webkit-background-clip:text;background-clip:text;color:transparent}
 .main-title::before{animation:g1 4s infinite;clip-path:polygon(0 0,100% 0,100% 35%,0 35%);text-shadow:2px 0 var(--neon-blue)}
 .main-title::after{animation:g2 4s infinite;clip-path:polygon(0 65%,100% 65%,100% 100%,0 100%);text-shadow:-2px 0 var(--neon-pink)}
 @keyframes g1{0%,100%{transform:translate(0)}10%{transform:translate(-4px,2px)}20%{transform:translate(3px,-1px)}30%,80%{transform:translate(0)}85%{transform:translate(-5px,1px)}90%{transform:translate(0)}}
 @keyframes g2{0%,100%{transform:translate(0)}15%{transform:translate(4px,-2px)}25%{transform:translate(-3px,1px)}35%,75%{transform:translate(0)}82%{transform:translate(3px,2px)}88%{transform:translate(0)}}
-.chapter-line{display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:.3rem;animation:fadeIn 2.5s ease-out}
+.chapter-line{display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:.3rem}
 .chapter-line .line{width:clamp(30px,8vw,80px);height:2px;background:linear-gradient(90deg,transparent,var(--neon-yellow),transparent);box-shadow:0 0 8px rgba(255,204,0,.3)}
 .chapter-num{font-family:'Eater',cursive;font-size:clamp(1.4rem,4vw,2.8rem);color:var(--neon-yellow);text-shadow:0 0 15px var(--neon-yellow),0 0 40px rgba(255,204,0,.3);letter-spacing:6px}
-.countdowns-wrapper{margin-top:1.5rem;display:flex;flex-wrap:wrap;gap:1.5rem;align-items:stretch;justify-content:center;width:100%;max-width:1400px;animation:fadeIn 3s ease-out;flex-shrink:0}
+
+/* BLOCKS */
+.countdowns-wrapper{margin-top:1.5rem;display:flex;flex-wrap:wrap;gap:1.5rem;align-items:stretch;justify-content:center;width:100%;max-width:1400px;flex-shrink:0}
 .countdown-block{position:relative;padding:1.2rem 1.5rem;border-radius:16px;background:rgba(255,255,255,.015);border:1px solid rgba(255,0,102,.1);backdrop-filter:blur(4px);flex:1 1 320px;max-width:650px;min-width:280px}
-.countdown-block::before{content:'';position:absolute;inset:0;border-radius:16px;background:linear-gradient(180deg,rgba(255,0,102,.02),transparent 60%)}
 .countdown-block.trailer-block{border-color:rgba(0,240,255,.15)}
-.countdown-block.trailer-block::before{background:linear-gradient(180deg,rgba(0,240,255,.02),transparent 60%)}
 .cd-header{display:flex;align-items:center;justify-content:center;gap:.6rem;margin-bottom:.7rem}
 .cd-icon{font-size:1.2rem}
 .cd-title{font-family:'Creepster',cursive;font-size:clamp(.75rem,1.5vw,1.1rem);letter-spacing:5px;text-transform:uppercase}
 .trailer-block .cd-title{color:var(--neon-blue);text-shadow:0 0 15px rgba(0,240,255,.4)}
 .release-block .cd-title{color:var(--neon-pink);text-shadow:0 0 15px rgba(255,0,102,.4)}
-.cd-date{font-family:'Special Elite',cursive;font-size:.6rem;color:#555;letter-spacing:3px;margin-bottom:.8rem}
-.countdown{display:flex;gap:clamp(.3rem,1vw,.8rem);flex-wrap:wrap;justify-content:center}
-.time-block{position:relative;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:clamp(.5rem,1.2vw,1rem) clamp(.6rem,1.5vw,1.3rem);min-width:clamp(55px,10vw,90px);transition:all .3s}
-.time-block:hover{border-color:rgba(255,0,102,.3);box-shadow:0 0 25px rgba(255,0,102,.08);transform:translateY(-2px)}
-.trailer-block .time-block:hover{border-color:rgba(0,240,255,.3);box-shadow:0 0 25px rgba(0,240,255,.08)}
-.time-value{font-family:'Nosifer',cursive;font-size:clamp(1.5rem,4vw,3rem);color:#fff;line-height:1;position:relative;z-index:1}
-.trailer-block .time-value{text-shadow:0 0 12px var(--neon-blue),0 0 30px rgba(0,240,255,.25)}
-.release-block .time-value{text-shadow:0 0 12px var(--neon-pink),0 0 30px rgba(255,0,102,.25)}
-.time-label{font-family:'Special Elite',cursive;font-size:clamp(.4rem,.8vw,.6rem);color:#666;text-transform:uppercase;letter-spacing:3px;margin-top:.3rem;position:relative;z-index:1}
-.trailer-block .time-label{color:rgba(0,240,255,.5)}
-.release-block .time-label{color:rgba(255,0,102,.5)}
-.separator{font-family:'Nosifer',cursive;font-size:clamp(1.2rem,3vw,2.2rem);color:var(--blood);align-self:center;animation:blink 1s step-end infinite;text-shadow:0 0 15px rgba(139,0,0,.5)}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.15}}
-.cd-done{display:none;font-family:'Nosifer',cursive;font-size:clamp(.9rem,2.5vw,1.6rem);animation:pulseG 1.5s ease-in-out infinite;padding:.4rem 0}
-.cd-done.show{display:block}
-.trailer-block .cd-done{color:var(--neon-blue);text-shadow:0 0 30px var(--neon-blue),0 0 60px rgba(0,240,255,.3)}
-.release-block .cd-done{color:var(--neon-pink);text-shadow:0 0 30px var(--neon-pink),0 0 60px rgba(255,0,102,.3)}
-@keyframes pulseG{0%,100%{filter:brightness(1)}50%{filter:brightness(1.3)}}
-.trailer-video-wrapper{display:none;margin-top:.8rem;width:100%;max-width:560px;position:relative;z-index:10;margin-left:auto;margin-right:auto}
-.trailer-video-wrapper.show{display:block}
-.trailer-video-wrapper iframe{width:100%;aspect-ratio:16/9;border-radius:12px;border:1px solid rgba(0,240,255,.25);box-shadow:0 0 40px rgba(0,240,255,.15),0 0 80px rgba(0,240,255,.05)}
-.action-btn{display:none;margin-top:.6rem;padding:.6rem 1.8rem;font-family:'Creepster',cursive;font-size:.95rem;border-radius:6px;cursor:pointer;letter-spacing:3px;text-transform:uppercase;text-decoration:none;transition:all .3s;border:2px solid}
-.action-btn.show{display:inline-block}
-.release-btn{color:var(--neon-yellow);border-color:var(--neon-yellow);background:transparent;text-shadow:0 0 8px rgba(255,204,0,.3);box-shadow:0 0 15px rgba(255,204,0,.1)}
-.release-btn:hover{background:var(--neon-yellow);color:#000;box-shadow:0 0 40px rgba(255,204,0,.3)}
 
-/* LAUNCH GAME BUTTON */
-.launch-btn{display:inline-block;padding:.9rem 2.5rem;font-family:'Nosifer',cursive;font-size:clamp(.9rem,2vw,1.4rem);color:#fff;background:linear-gradient(180deg,var(--poppy-red),#5a0015);border:2px solid var(--neon-pink);border-radius:10px;text-decoration:none;letter-spacing:4px;text-transform:uppercase;text-shadow:0 0 15px var(--neon-pink),0 0 30px rgba(255,0,102,.4);box-shadow:0 0 25px rgba(255,0,102,.3),0 0 60px rgba(255,0,102,.1),inset 0 0 20px rgba(255,0,102,.1);transition:all .3s;cursor:pointer;animation:launchPulse 2s ease-in-out infinite;position:relative;z-index:1}
+.trailer-video-wrapper{width:100%;max-width:560px;position:relative;z-index:10;margin:0 auto}
+.trailer-video-wrapper iframe{width:100%;aspect-ratio:16/9;border-radius:12px;border:1px solid rgba(0,240,255,.25);box-shadow:0 0 40px rgba(0,240,255,.15)}
+
+.cd-done{font-family:'Nosifer',cursive;font-size:clamp(.9rem,2.5vw,1.6rem);padding:.4rem 0}
+.release-block .cd-done{color:var(--neon-pink);text-shadow:0 0 30px var(--neon-pink),0 0 60px rgba(255,0,102,.3)}
+
+/* LAUNCH BUTTON */
+.launch-btn{display:inline-block;padding:.9rem 2.5rem;font-family:'Nosifer',cursive;font-size:clamp(.9rem,2vw,1.4rem);color:#fff;background:linear-gradient(180deg,var(--poppy-red),#5a0015);border:2px solid var(--neon-pink);border-radius:10px;text-decoration:none;letter-spacing:4px;text-transform:uppercase;text-shadow:0 0 15px var(--neon-pink),0 0 30px rgba(255,0,102,.4);box-shadow:0 0 25px rgba(255,0,102,.3),0 0 60px rgba(255,0,102,.1),inset 0 0 20px rgba(255,0,102,.1);transition:all .3s;cursor:pointer;animation:launchPulse 2s ease-in-out infinite}
 .launch-btn:hover{transform:scale(1.08);box-shadow:0 0 40px rgba(255,0,102,.5),0 0 80px rgba(255,0,102,.2),inset 0 0 30px rgba(255,0,102,.2);background:linear-gradient(180deg,#ff0044,#8b0020);text-shadow:0 0 20px #fff,0 0 40px var(--neon-pink)}
 @keyframes launchPulse{0%,100%{box-shadow:0 0 25px rgba(255,0,102,.3),0 0 60px rgba(255,0,102,.1),inset 0 0 20px rgba(255,0,102,.1)}50%{box-shadow:0 0 35px rgba(255,0,102,.5),0 0 80px rgba(255,0,102,.2),inset 0 0 25px rgba(255,0,102,.15)}}
 
 .store-btn{display:inline-block;margin-top:.6rem;padding:.4rem 1.5rem;font-family:'Creepster',cursive;font-size:.7rem;color:#666;border:1px solid rgba(255,255,255,.08);border-radius:6px;text-decoration:none;letter-spacing:3px;text-transform:uppercase;transition:all .3s;cursor:pointer}
 .store-btn:hover{color:var(--neon-blue);border-color:rgba(0,240,255,.3);text-shadow:0 0 8px rgba(0,240,255,.3)}
+
+/* BOTTOM ROW */
 .bottom-row{margin-top:1.2rem;display:flex;flex-wrap:wrap;gap:2rem;align-items:flex-start;justify-content:center;width:100%;max-width:1200px;flex-shrink:0}
-.fear-section{flex:1 1 300px;max-width:400px;animation:fadeIn 3.5s ease-out}
+.fear-section{flex:1 1 300px;max-width:400px}
 .fear-label{font-family:'Creepster',cursive;font-size:.8rem;color:#555;letter-spacing:4px;text-transform:uppercase;margin-bottom:.4rem}
 .fear-bar-outer{width:100%;height:6px;background:rgba(255,255,255,.04);border-radius:4px;overflow:hidden;border:1px solid rgba(255,0,102,.08)}
-.fear-bar-inner{height:100%;background:linear-gradient(90deg,var(--neon-blue),var(--neon-pink),var(--poppy-red));border-radius:4px;box-shadow:0 0 12px var(--neon-pink);transition:width 1s}
+.fear-bar-inner{height:100%;width:99%;background:linear-gradient(90deg,var(--neon-blue),var(--neon-pink),var(--poppy-red));border-radius:4px;box-shadow:0 0 12px var(--neon-pink)}
 .fear-text{font-family:'Special Elite',cursive;font-size:.6rem;color:var(--neon-pink);margin-top:.3rem;letter-spacing:2px;text-shadow:0 0 6px rgba(255,0,102,.2)}
-.characters-section{flex:1 1 400px;max-width:600px;animation:fadeIn 4s ease-out}
+.characters-section{flex:1 1 400px;max-width:600px}
 .characters-label{font-family:'Creepster',cursive;font-size:.75rem;color:#444;letter-spacing:5px;text-transform:uppercase;margin-bottom:.6rem}
 .characters-grid{display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center}
-.char-card{width:72px;height:90px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:all .4s;position:relative;overflow:hidden}
-.char-card::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(255,0,102,.05));opacity:0;transition:opacity .3s}
-.char-card:hover::before{opacity:1}
+.char-card{width:72px;height:90px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;position:relative;overflow:hidden}
 .char-card:hover{border-color:var(--neon-pink);box-shadow:0 0 20px rgba(255,0,102,.12);transform:translateY(-4px) scale(1.05)}
 .char-icon{font-size:1.8rem;transition:transform .3s;filter:grayscale(.3)}
 .char-card:hover .char-icon{filter:grayscale(0);transform:scale(1.15)}
@@ -116,70 +81,77 @@ body{width:100vw;height:100vh;overflow:hidden;background:var(--dark);font-family
 .char-card:hover .char-name{color:var(--neon-pink)}
 .char-status{font-size:.38rem;color:#3a3a3a;margin-top:.12rem;letter-spacing:1px}
 .char-card:hover .char-status{color:#777}
-.message{margin-top:1rem;font-family:'Special Elite',cursive;font-size:clamp(.6rem,1.1vw,.85rem);color:#444;letter-spacing:2px;max-width:600px;line-height:1.9;animation:fadeIn 4.5s ease-out;flex-shrink:0}
+
+/* MESSAGE */
+.message{margin-top:1rem;font-family:'Special Elite',cursive;font-size:clamp(.6rem,1.1vw,.85rem);color:#444;letter-spacing:2px;max-width:600px;line-height:1.9;flex-shrink:0}
 .message .red{color:var(--poppy-red);text-shadow:0 0 8px rgba(204,0,51,.3)}
 .message .blue{color:var(--neon-blue);text-shadow:0 0 8px rgba(0,240,255,.3)}
 .message .pink{color:var(--neon-pink);text-shadow:0 0 8px rgba(255,0,102,.3)}
+
+/* WHISPER */
 .whisper-box{position:fixed;bottom:50px;left:15px;z-index:60;max-width:260px;padding:8px 14px;background:rgba(0,0,0,.88);border:1px solid rgba(255,0,102,.15);border-radius:8px;font-family:'Special Elite',cursive;font-size:.65rem;color:var(--neon-pink);letter-spacing:1px;opacity:0;transition:opacity 1s;text-shadow:0 0 6px rgba(255,0,102,.2);pointer-events:none}
 .whisper-box.show{opacity:1}
-.blood-drips{position:fixed;top:36px;left:0;right:0;z-index:3;pointer-events:none;height:200px;overflow:hidden}
-.bd{position:absolute;top:0;width:3px;background:linear-gradient(180deg,var(--blood) 0%,rgba(139,0,0,.3) 70%,transparent);border-radius:0 0 50% 50%;opacity:0;animation:dripD 7s ease-in infinite}
-@keyframes dripD{0%{height:0;opacity:.7}60%{height:80px;opacity:.5}100%{height:160px;opacity:0}}
-.floating-eyes{position:fixed;inset:0;z-index:4;pointer-events:none;overflow:hidden}
-.f-eye{position:absolute;opacity:0;animation:eyeA 12s ease-in-out infinite}
-@keyframes eyeA{0%,100%{opacity:0;transform:scale(.8)}40%{opacity:.12;transform:scale(1)}60%{opacity:.12}100%{opacity:0;transform:scale(.8)}}
-.jumpscare{position:fixed;inset:0;z-index:10000;background:#000;display:none;align-items:center;justify-content:center}
-.jumpscare.active{display:flex}
-.jumpscare-face{font-size:min(40vw,300px);animation:jShake .12s infinite;filter:drop-shadow(0 0 60px rgba(255,0,0,.8))}
-@keyframes jShake{0%{transform:translate(0) scale(1)}25%{transform:translate(-8px,5px) scale(1.05)}50%{transform:translate(5px,-8px) scale(.98)}75%{transform:translate(-5px,8px) scale(1.03)}100%{transform:translate(8px,-5px) scale(1)}}
+
+/* SOUND */
 .sound-panel{position:fixed;bottom:50px;right:15px;z-index:200;display:flex;flex-direction:column;gap:8px;align-items:flex-end}
 .sound-btn{width:50px;height:50px;border-radius:50%;border:2px solid var(--neon-pink);background:rgba(0,0,0,.88);color:var(--neon-pink);font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;box-shadow:0 0 12px rgba(255,0,102,.2);backdrop-filter:blur(4px)}
 .sound-btn:hover{background:var(--neon-pink);color:#000;box-shadow:0 0 30px rgba(255,0,102,.4);transform:scale(1.1)}
-.sound-btn.active{border-color:var(--neon-blue);color:var(--neon-blue);box-shadow:0 0 12px rgba(0,240,255,.3);animation:sPulse 2s ease-in-out infinite}
-@keyframes sPulse{0%,100%{box-shadow:0 0 12px rgba(0,240,255,.3)}50%{box-shadow:0 0 25px rgba(0,240,255,.5)}}
+.sound-btn.active{border-color:var(--neon-blue);color:var(--neon-blue);box-shadow:0 0 12px rgba(0,240,255,.3)}
 .vol-slider{width:44px;height:0;overflow:hidden;transition:height .3s;background:rgba(0,0,0,.88);border-radius:22px;border:1px solid rgba(255,0,102,.12);display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
 .vol-slider.open{height:120px;padding:8px 0}
 .vol-slider input[type=range]{writing-mode:vertical-lr;direction:rtl;height:95px;width:4px;accent-color:var(--neon-pink);cursor:pointer}
-.click-counter{position:fixed;top:44px;right:15px;z-index:60;font-family:'Creepster',cursive;font-size:.6rem;color:#2a2a2a;letter-spacing:2px;transition:color .3s}
-.click-counter.hot{color:var(--poppy-red);text-shadow:0 0 8px rgba(204,0,51,.3)}
+
 .footer{position:fixed;bottom:40px;left:50%;transform:translateX(-50%);z-index:20;font-size:.45rem;color:#222;letter-spacing:3px;text-transform:uppercase;white-space:nowrap}
-@media(max-width:600px){.countdown{gap:.3rem}.time-block{min-width:50px;padding:.4rem .5rem}.separator{font-size:1rem}.char-card{width:58px;height:75px}.char-icon{font-size:1.3rem}.whisper-box{left:8px;right:60px;max-width:none;bottom:42px}.sound-panel{bottom:42px;right:8px}.countdown-block{padding:.8rem .8rem}.bottom-row{gap:1rem}}
+
+@media(max-width:600px){
+  .char-card{width:58px;height:75px}.char-icon{font-size:1.3rem}
+  .whisper-box{left:8px;right:60px;max-width:none;bottom:42px}
+  .sound-panel{bottom:42px;right:8px}
+  .countdown-block{padding:.8rem}.bottom-row{gap:1rem}
+}
 </style>
 </head>
 <body>
+
+<!-- Hidden YouTube music player -->
 <div style="position:fixed;top:-9999px;left:-9999px;pointer-events:none"><div id="ytMusicContainer"></div></div>
-<div class="preloader" id="preloader"><div class="preloader-text">Loading the horror...</div><div class="preloader-bar"><div class="preloader-bar-inner"></div></div></div>
-<div class="bg-layer"></div><div class="fog"><div class="fog-layer"></div><div class="fog-layer"></div></div><div class="grain"></div><div class="scanlines"></div><div class="vignette"></div><div class="glitch-overlay" id="glitchOverlay"></div><div class="particles" id="particles"></div><div class="blood-rain" id="bloodRain"></div><div class="blood-drips" id="bloodDrips"></div><div class="floating-eyes" id="floatingEyes"></div>
+
+<div class="bg-layer"></div>
+<div class="scanlines"></div>
+<div class="vignette"></div>
+
 <div class="warning-tape"><span class="tape-text">⚠ PLAYTIME CO. ⚠ RESTRICTED AREA ⚠ DO NOT ENTER ⚠ THE END ⚠ END OF THE ROPE ⚠ CHAPTER 5: BROKEN THINGS ⚠ THEY'RE COMING ⚠ THANK YOU FOR PLAYING ⚠ PLAYTIME CO. ⚠ RESTRICTED AREA ⚠ DO NOT ENTER ⚠ THE END ⚠</span></div>
 <div class="warning-tape-bottom"></div>
+
 <div class="whisper-box" id="whisperBox"></div>
-<div class="click-counter" id="clickCounter">CLICKS: 0</div>
-<div class="jumpscare" id="jumpscare"><div class="jumpscare-face">😈</div></div>
+
 <div class="container">
   <div class="logo-area">
     <div class="playtime-co">▸ Playtime Co. presents ◂</div>
     <h1 class="main-title" data-text="POPPY PLAYTIME">POPPY PLAYTIME</h1>
     <div class="chapter-line"><div class="line"></div><div class="chapter-num">CHAPTER 5</div><div class="line"></div></div>
   </div>
+
   <div class="countdowns-wrapper">
     <div class="countdown-block trailer-block">
       <div class="cd-header"><span class="cd-icon">🎬</span><span class="cd-title">Gameplay Trailer</span></div>
-      <div class="trailer-video-wrapper show">
-        <iframe src="https://www.youtube.com/embed/EriEensiy0I?rel=0&modestbranding=1" title="Poppy Playtime Chapter 5 - Gameplay Trailer" frameborder="0" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;web-share" allowfullscreen></iframe>
+      <div class="trailer-video-wrapper">
+        <iframe src="https://www.youtube.com/embed/EriEensiy0I?rel=0&modestbranding=1" title="Poppy Playtime Chapter 5 - Gameplay Trailer" frameborder="0" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;web-share" loading="lazy" allowfullscreen></iframe>
       </div>
     </div>
     <div class="countdown-block release-block" style="display:flex;flex-direction:column;align-items:center;justify-content:center">
       <div class="cd-header"><span class="cd-icon">🎮</span><span class="cd-title">Chapter 5 is here</span></div>
-      <div class="cd-done show" style="margin-bottom:.8rem">🎮 OUT NOW!</div>
-      <a href="steam://run/1721470" class="launch-btn" id="launchBtn">▶ LAUNCH GAME</a>
+      <div class="cd-done" style="margin-bottom:.8rem">🎮 OUT NOW!</div>
+      <a href="steam://run/1721470" class="launch-btn">▶ LAUNCH GAME</a>
       <a href="https://store.steampowered.com/app/1721470/Poppy_Playtime/" class="store-btn" target="_blank">STEAM STORE PAGE</a>
     </div>
   </div>
+
   <div class="bottom-row">
     <div class="fear-section">
       <div class="fear-label">Fear Level</div>
-      <div class="fear-bar-outer"><div class="fear-bar-inner" id="fearBar" style="width:0%"></div></div>
-      <div class="fear-text" id="fearText">Calm... for now</div>
+      <div class="fear-bar-outer"><div class="fear-bar-inner"></div></div>
+      <div class="fear-text">⚠ THE HORROR HAS BEGUN ⚠</div>
     </div>
     <div class="characters-section">
       <div class="characters-label">They're waiting for you</div>
@@ -193,6 +165,7 @@ body{width:100vw;height:100vh;overflow:hidden;background:var(--dark);font-family
       </div>
     </div>
   </div>
+
   <div class="message">
     <span class="red">The End.</span> — <span class="blue">Thank you for playing.</span><br>
     The Playtime Co. factory opens its doors one last time...<br>
@@ -200,53 +173,37 @@ body{width:100vw;height:100vh;overflow:hidden;background:var(--dark);font-family
     <span class="pink">You're not ready for what's coming.</span>
   </div>
 </div>
+
+<!-- SOUND PANEL -->
 <div class="sound-panel">
   <div class="vol-slider" id="volSlider"><input type="range" min="0" max="100" value="50" id="volRange"></div>
   <button class="sound-btn" id="soundBtn" title="Toggle Music">🔇</button>
 </div>
+
 <div class="footer">Fan-made • Not affiliated with MOB Entertainment • end-of-the-rope.com</div>
+
 <script async src="https://www.youtube.com/iframe_api"></script>
 <script>
+// YOUTUBE MUSIC
 const MUSIC_VIDEO_ID='rJTyjQ_nIIQ';
-// Game is out! No more countdowns needed.
-// Fear meter at max
-document.getElementById('fearBar').style.width='99%';
-document.getElementById('fearText').textContent='⚠ THE HORROR HAS BEGUN ⚠';
-
 let ytPlayer=null,ytReady=false,musicPlaying=false,currentVolume=50;
-function onYouTubeIframeAPIReady(){ytPlayer=new YT.Player('ytMusicContainer',{height:'1',width:'1',videoId:MUSIC_VIDEO_ID,playerVars:{autoplay:0,loop:1,playlist:MUSIC_VIDEO_ID,controls:0,disablekb:1,fs:0,modestbranding:1},events:{onReady:function(){ytReady=true;ytPlayer.setVolume(currentVolume)},onStateChange:function(e){if(e.data===YT.PlayerState.ENDED)ytPlayer.playVideo()}}})}}
+function onYouTubeIframeAPIReady(){
+  ytPlayer=new YT.Player('ytMusicContainer',{height:'1',width:'1',videoId:MUSIC_VIDEO_ID,
+    playerVars:{autoplay:0,loop:1,playlist:MUSIC_VIDEO_ID,controls:0,disablekb:1,fs:0,modestbranding:1},
+    events:{onReady:function(){ytReady=true;ytPlayer.setVolume(currentVolume)},
+    onStateChange:function(e){if(e.data===YT.PlayerState.ENDED)ytPlayer.playVideo()}}});
+}
 
-let sfxCtx=null;
-function ensureSfxCtx(){if(!sfxCtx)sfxCtx=new(window.AudioContext||window.webkitAudioContext)();return sfxCtx}
-function playSfx(f,t,d,v){const c=ensureSfxCtx(),o=c.createOscillator();o.type=t||'sine';o.frequency.setValueAtTime(f,c.currentTime);const g=c.createGain();g.gain.setValueAtTime(v||.05,c.currentTime);g.gain.exponentialRampToValueAtTime(.001,c.currentTime+(d||.5));o.connect(g);g.connect(c.destination);o.start();o.stop(c.currentTime+(d||.5)+.1)}
-function playJumpscareSfx(){const c=ensureSfxCtx(),o=c.createOscillator();o.type='sawtooth';o.frequency.setValueAtTime(200,c.currentTime);o.frequency.exponentialRampToValueAtTime(2000,c.currentTime+.1);o.frequency.exponentialRampToValueAtTime(50,c.currentTime+.5);const g=c.createGain();g.gain.setValueAtTime(.15,c.currentTime);g.gain.exponentialRampToValueAtTime(.001,c.currentTime+.8);o.connect(g);g.connect(c.destination);o.start();o.stop(c.currentTime+.8)}
-
+// SOUND CONTROLS
 const sBtn=document.getElementById('soundBtn'),vSl=document.getElementById('volSlider'),vR=document.getElementById('volRange');
 sBtn.addEventListener('click',()=>{if(!ytReady)return;if(!musicPlaying){ytPlayer.playVideo();musicPlaying=true;sBtn.textContent='🔊';sBtn.classList.add('active');vSl.classList.add('open')}else{ytPlayer.pauseVideo();musicPlaying=false;sBtn.textContent='🔇';sBtn.classList.remove('active');vSl.classList.remove('open')}});
 vR.addEventListener('input',e=>{currentVolume=parseInt(e.target.value);if(ytReady&&ytPlayer)ytPlayer.setVolume(currentVolume)});
-sBtn.addEventListener('contextmenu',e=>{e.preventDefault();vSl.classList.toggle('open')});
 
-// Force preloader to hide no matter what
-(function(){var p=document.getElementById('preloader');function hide(){if(p)p.classList.add('hidden')}setTimeout(hide,2500);if(document.readyState==='complete'||document.readyState==='interactive'){setTimeout(hide,800)}else{document.addEventListener('DOMContentLoaded',function(){setTimeout(hide,1500)});window.addEventListener('load',function(){setTimeout(hide,500)})}})();
-
-const pEl=document.getElementById('particles');for(let i=0;i<35;i++){const p=document.createElement('div');p.className='particle';const sz=2+Math.random()*4,c=Math.random()>.5;p.style.cssText='left:'+Math.random()*100+'%;width:'+sz+'px;height:'+sz+'px;animation-duration:'+(8+Math.random()*14)+'s;animation-delay:'+Math.random()*10+'s;background:'+(c?'var(--neon-blue)':'var(--neon-pink)')+';box-shadow:0 0 '+sz*2+'px '+(c?'var(--neon-blue)':'var(--neon-pink)');pEl.appendChild(p)}
-const bR=document.getElementById('bloodRain');for(let i=0;i<18;i++){const d=document.createElement('div');d.className='blood-drop';d.style.cssText='left:'+Math.random()*100+'%;height:'+(20+Math.random()*40)+'px;animation-duration:'+(2+Math.random()*3)+'s;animation-delay:'+Math.random()*5+'s';bR.appendChild(d)}
-const bD=document.getElementById('bloodDrips');for(let i=0;i<8;i++){const d=document.createElement('div');d.className='bd';d.style.cssText='left:'+(5+Math.random()*90)+'%;animation-delay:'+Math.random()*7+'s;animation-duration:'+(5+Math.random()*4)+'s';bD.appendChild(d)}
-const fE=document.getElementById('floatingEyes');for(let i=0;i<6;i++){const e=document.createElement('div');e.className='f-eye';e.textContent='👁';e.style.cssText='left:'+Math.random()*90+'%;top:'+Math.random()*80+'%;animation-delay:'+Math.random()*12+'s;animation-duration:'+(8+Math.random()*8)+'s;font-size:'+(.7+Math.random()*.7)+'rem';fE.appendChild(e)}
-
-const whispers=["Can you hear me?...","Don't turn around.","Playtime is almost here...","Huggy never sleeps.","They know you're here.","Run.","The door is locked.","Someone's watching.","CatNap dreams of you.","The factory remembers.","Poppy says... play with me.","It's playtime.","Thank you for playing.","End of the rope.","The Prototype is awake.","Shh... they're coming.","Look behind you.","Broken Things...","You'll never leave.","The End."];
+// WHISPERS
+const whispers=["Can you hear me?...","Don't turn around.","Huggy never sleeps.","They know you're here.","Run.","The door is locked.","Someone's watching.","CatNap dreams of you.","The factory remembers.","Poppy says... play with me.","It's playtime.","Thank you for playing.","End of the rope.","The Prototype is awake.","Shh... they're coming.","Look behind you.","Broken Things...","You'll never leave.","The End."];
 const wBox=document.getElementById('whisperBox');let wIdx=0;
 function showW(){wBox.classList.remove('show');setTimeout(()=>{wBox.textContent='> '+whispers[wIdx%whispers.length]+'_';wBox.classList.add('show');wIdx++;setTimeout(()=>wBox.classList.remove('show'),4000)},500)}
-setInterval(showW,8000);setTimeout(showW,4000);
-
-const gO=document.getElementById('glitchOverlay');
-setInterval(()=>{if(Math.random()>.88){gO.style.opacity='1';gO.style.background='rgba('+(Math.random()>.5?'255,0,102':'0,240,255')+',.04)';document.body.style.filter='brightness('+(0.8+Math.random()*.5)+') hue-rotate('+Math.random()*10+'deg)';setTimeout(()=>{gO.style.opacity='0';document.body.style.filter=''},80+Math.random()*120)}},2500);
-setInterval(()=>{if(Math.random()>.95){document.body.style.transform='translate('+((Math.random()-.5)*4)+'px,'+((Math.random()-.5)*3)+'px)';setTimeout(()=>document.body.style.transform='',100)}},4000);
-
-let clicks=0;const cEl=document.getElementById('clickCounter'),jEl=document.getElementById('jumpscare');
-document.addEventListener('click',e=>{if(e.target.closest('.sound-panel')||e.target.closest('.action-btn')||e.target.closest('.trailer-video-wrapper'))return;clicks++;cEl.textContent='CLICKS: '+clicks;if(clicks>15)cEl.classList.add('hot');if(clicks===25||(clicks>40&&Math.random()>.92))triggerJS()});
-function triggerJS(){jEl.classList.add('active');if(musicPlaying)playJumpscareSfx();setTimeout(()=>jEl.classList.remove('active'),600)}
-document.querySelectorAll('.char-card').forEach(c=>{c.addEventListener('mouseenter',()=>{if(!musicPlaying)return;const fr={huggy:150,poppy:600,catnap:80,dogday:300,proto:55,unknown:1000};playSfx(fr[c.dataset.char]||400,c.dataset.char==='unknown'?'sawtooth':'sine',.6,.04)})});
+setInterval(showW,8000);setTimeout(showW,3000);
 </script>
 </body>
 </html>
