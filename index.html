@@ -89,6 +89,14 @@ body{width:100vw;height:100vh;overflow:hidden;background:var(--dark);font-family
 .action-btn.show{display:inline-block}
 .release-btn{color:var(--neon-yellow);border-color:var(--neon-yellow);background:transparent;text-shadow:0 0 8px rgba(255,204,0,.3);box-shadow:0 0 15px rgba(255,204,0,.1)}
 .release-btn:hover{background:var(--neon-yellow);color:#000;box-shadow:0 0 40px rgba(255,204,0,.3)}
+
+/* LAUNCH GAME BUTTON */
+.launch-btn{display:inline-block;padding:.9rem 2.5rem;font-family:'Nosifer',cursive;font-size:clamp(.9rem,2vw,1.4rem);color:#fff;background:linear-gradient(180deg,var(--poppy-red),#5a0015);border:2px solid var(--neon-pink);border-radius:10px;text-decoration:none;letter-spacing:4px;text-transform:uppercase;text-shadow:0 0 15px var(--neon-pink),0 0 30px rgba(255,0,102,.4);box-shadow:0 0 25px rgba(255,0,102,.3),0 0 60px rgba(255,0,102,.1),inset 0 0 20px rgba(255,0,102,.1);transition:all .3s;cursor:pointer;animation:launchPulse 2s ease-in-out infinite;position:relative;z-index:1}
+.launch-btn:hover{transform:scale(1.08);box-shadow:0 0 40px rgba(255,0,102,.5),0 0 80px rgba(255,0,102,.2),inset 0 0 30px rgba(255,0,102,.2);background:linear-gradient(180deg,#ff0044,#8b0020);text-shadow:0 0 20px #fff,0 0 40px var(--neon-pink)}
+@keyframes launchPulse{0%,100%{box-shadow:0 0 25px rgba(255,0,102,.3),0 0 60px rgba(255,0,102,.1),inset 0 0 20px rgba(255,0,102,.1)}50%{box-shadow:0 0 35px rgba(255,0,102,.5),0 0 80px rgba(255,0,102,.2),inset 0 0 25px rgba(255,0,102,.15)}}
+
+.store-btn{display:inline-block;margin-top:.6rem;padding:.4rem 1.5rem;font-family:'Creepster',cursive;font-size:.7rem;color:#666;border:1px solid rgba(255,255,255,.08);border-radius:6px;text-decoration:none;letter-spacing:3px;text-transform:uppercase;transition:all .3s;cursor:pointer}
+.store-btn:hover{color:var(--neon-blue);border-color:rgba(0,240,255,.3);text-shadow:0 0 8px rgba(0,240,255,.3)}
 .bottom-row{margin-top:1.2rem;display:flex;flex-wrap:wrap;gap:2rem;align-items:flex-start;justify-content:center;width:100%;max-width:1200px;flex-shrink:0}
 .fear-section{flex:1 1 300px;max-width:400px;animation:fadeIn 3.5s ease-out}
 .fear-label{font-family:'Creepster',cursive;font-size:.8rem;color:#555;letter-spacing:4px;text-transform:uppercase;margin-bottom:.4rem}
@@ -156,29 +164,15 @@ body{width:100vw;height:100vh;overflow:hidden;background:var(--dark);font-family
   <div class="countdowns-wrapper">
     <div class="countdown-block trailer-block">
       <div class="cd-header"><span class="cd-icon">🎬</span><span class="cd-title">Gameplay Trailer</span></div>
-      <div class="cd-date">February 11, 2026 — 1:00 PM EST</div>
-      <div class="countdown" id="trailerCountdown">
-        <div class="time-block"><div class="time-value" id="tDays">00</div><div class="time-label">Days</div></div><div class="separator">:</div>
-        <div class="time-block"><div class="time-value" id="tHours">00</div><div class="time-label">Hours</div></div><div class="separator">:</div>
-        <div class="time-block"><div class="time-value" id="tMins">00</div><div class="time-label">Min</div></div><div class="separator">:</div>
-        <div class="time-block"><div class="time-value" id="tSecs">00</div><div class="time-label">Sec</div></div>
-      </div>
-      <div class="cd-done" id="trailerDone">🎬 TRAILER OUT NOW!</div>
-      <div class="trailer-video-wrapper" id="trailerVideoWrapper">
-        <iframe id="trailerIframe" src="" title="Poppy Playtime Chapter 5 - Gameplay Trailer" frameborder="0" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;web-share" allowfullscreen></iframe>
+      <div class="trailer-video-wrapper show">
+        <iframe src="https://www.youtube.com/embed/EriEensiy0I?rel=0&modestbranding=1" title="Poppy Playtime Chapter 5 - Gameplay Trailer" frameborder="0" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;web-share" allowfullscreen></iframe>
       </div>
     </div>
-    <div class="countdown-block release-block">
-      <div class="cd-header"><span class="cd-icon">🎮</span><span class="cd-title">Game Release</span></div>
-      <div class="cd-date">February 18, 2026 — 6:00 PM CET / 12:00 PM EST</div>
-      <div class="countdown" id="releaseCountdown">
-        <div class="time-block"><div class="time-value" id="rDays">00</div><div class="time-label">Days</div></div><div class="separator">:</div>
-        <div class="time-block"><div class="time-value" id="rHours">00</div><div class="time-label">Hours</div></div><div class="separator">:</div>
-        <div class="time-block"><div class="time-value" id="rMins">00</div><div class="time-label">Min</div></div><div class="separator">:</div>
-        <div class="time-block"><div class="time-value" id="rSecs">00</div><div class="time-label">Sec</div></div>
-      </div>
-      <div class="cd-done" id="releaseDone">🎮 IT'S OUT!</div>
-      <a href="https://store.steampowered.com/app/1721470/Poppy_Playtime/" class="action-btn release-btn" id="releaseBtn" target="_blank">▶ PLAY NOW</a>
+    <div class="countdown-block release-block" style="display:flex;flex-direction:column;align-items:center;justify-content:center">
+      <div class="cd-header"><span class="cd-icon">🎮</span><span class="cd-title">Chapter 5 is here</span></div>
+      <div class="cd-done show" style="margin-bottom:.8rem">🎮 OUT NOW!</div>
+      <a href="steam://run/1721470" class="launch-btn" id="launchBtn">▶ LAUNCH GAME</a>
+      <a href="https://store.steampowered.com/app/1721470/Poppy_Playtime/" class="store-btn" target="_blank">STEAM STORE PAGE</a>
     </div>
   </div>
   <div class="bottom-row">
@@ -214,10 +208,13 @@ body{width:100vw;height:100vh;overflow:hidden;background:var(--dark);font-family
 <script src="https://www.youtube.com/iframe_api"></script>
 <script>
 const MUSIC_VIDEO_ID='rJTyjQ_nIIQ';
-const TRAILER_VIDEO_ID='EriEensiy0I';
+// Game is out! No more countdowns needed.
+// Fear meter at max
+document.getElementById('fearBar').style.width='99%';
+document.getElementById('fearText').textContent='⚠ THE HORROR HAS BEGUN ⚠';
 
 let ytPlayer=null,ytReady=false,musicPlaying=false,currentVolume=50;
-function onYouTubeIframeAPIReady(){ytPlayer=new YT.Player('ytMusicContainer',{height:'1',width:'1',videoId:MUSIC_VIDEO_ID,playerVars:{autoplay:0,loop:1,playlist:MUSIC_VIDEO_ID,controls:0,disablekb:1,fs:0,modestbranding:1},events:{onReady:function(){ytReady=true;ytPlayer.setVolume(currentVolume)},onStateChange:function(e){if(e.data===YT.PlayerState.ENDED)ytPlayer.playVideo()}}})}
+function onYouTubeIframeAPIReady(){ytPlayer=new YT.Player('ytMusicContainer',{height:'1',width:'1',videoId:MUSIC_VIDEO_ID,playerVars:{autoplay:0,loop:1,playlist:MUSIC_VIDEO_ID,controls:0,disablekb:1,fs:0,modestbranding:1},events:{onReady:function(){ytReady=true;ytPlayer.setVolume(currentVolume)},onStateChange:function(e){if(e.data===YT.PlayerState.ENDED)ytPlayer.playVideo()}}})}}
 
 let sfxCtx=null;
 function ensureSfxCtx(){if(!sfxCtx)sfxCtx=new(window.AudioContext||window.webkitAudioContext)();return sfxCtx}
@@ -230,24 +227,6 @@ vR.addEventListener('input',e=>{currentVolume=parseInt(e.target.value);if(ytRead
 sBtn.addEventListener('contextmenu',e=>{e.preventDefault();vSl.classList.toggle('open')});
 
 window.addEventListener('load',()=>{setTimeout(()=>document.getElementById('preloader').classList.add('hidden'),2200)});
-
-const trailerDate=new Date('2026-02-11T18:00:00Z').getTime();
-const releaseDate=new Date('2026-02-18T17:00:00Z').getTime();
-let trailerRevealed=false;
-
-function updateCD(target,dId,hId,mId,sId,cdEl,doneEl,btnEl){const diff=target-Date.now();if(diff<=0){if(cdEl)cdEl.style.display='none';if(doneEl)doneEl.classList.add('show');if(btnEl)btnEl.classList.add('show');return 0}const d=Math.floor(diff/864e5),h=Math.floor(diff%864e5/36e5),m=Math.floor(diff%36e5/6e4),s=Math.floor(diff%6e4/1e3);document.getElementById(dId).textContent=String(d).padStart(2,'0');document.getElementById(hId).textContent=String(h).padStart(2,'0');document.getElementById(mId).textContent=String(m).padStart(2,'0');document.getElementById(sId).textContent=String(s).padStart(2,'0');return diff}
-
-function tick(){
-  const tDiff=updateCD(trailerDate,'tDays','tHours','tMins','tSecs',document.getElementById('trailerCountdown'),document.getElementById('trailerDone'),null);
-  if(tDiff===0&&!trailerRevealed){trailerRevealed=true;document.getElementById('trailerIframe').src='https://www.youtube.com/embed/'+TRAILER_VIDEO_ID+'?rel=0&modestbranding=1';document.getElementById('trailerVideoWrapper').classList.add('show')}
-  const rDiff=updateCD(releaseDate,'rDays','rHours','rMins','rSecs',document.getElementById('releaseCountdown'),document.getElementById('releaseDone'),document.getElementById('releaseBtn'));
-  const totalSpan=releaseDate-new Date('2025-06-01').getTime(),elapsed=totalSpan-(rDiff||0);
-  const pct=Math.min(99,Math.max(5,(elapsed/totalSpan)*100));
-  document.getElementById('fearBar').style.width=pct+'%';
-  const ft=[[20,'Calm... for now'],[40,'Something is approaching...'],[60,'The noises are getting louder...'],[80,"THEY'RE ALMOST HERE..."],[95,'⚠ IMMINENT DANGER ⚠']];
-  for(let i=ft.length-1;i>=0;i--)if(pct>=ft[i][0]){document.getElementById('fearText').textContent=ft[i][1];break}
-}
-tick();setInterval(tick,1000);
 
 const pEl=document.getElementById('particles');for(let i=0;i<35;i++){const p=document.createElement('div');p.className='particle';const sz=2+Math.random()*4,c=Math.random()>.5;p.style.cssText='left:'+Math.random()*100+'%;width:'+sz+'px;height:'+sz+'px;animation-duration:'+(8+Math.random()*14)+'s;animation-delay:'+Math.random()*10+'s;background:'+(c?'var(--neon-blue)':'var(--neon-pink)')+';box-shadow:0 0 '+sz*2+'px '+(c?'var(--neon-blue)':'var(--neon-pink)');pEl.appendChild(p)}
 const bR=document.getElementById('bloodRain');for(let i=0;i<18;i++){const d=document.createElement('div');d.className='blood-drop';d.style.cssText='left:'+Math.random()*100+'%;height:'+(20+Math.random()*40)+'px;animation-duration:'+(2+Math.random()*3)+'s;animation-delay:'+Math.random()*5+'s';bR.appendChild(d)}
